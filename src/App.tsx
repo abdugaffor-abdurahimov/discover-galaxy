@@ -1,7 +1,15 @@
-import React, { ReactElement } from 'react';
+import React from "react";
+import ReactRouter from "./pages";
+import Posts from "./pages/posts";
 
-interface Props {}
+const App = () => {
+  return (
+    <div className="App">
+      <ReactRouter />
 
-export default function App({}: Props): ReactElement {
-  return <div className='App'>React webpack starter</div>;
-}
+      <Posts />
+    </div>
+  );
+};
+
+export default App;

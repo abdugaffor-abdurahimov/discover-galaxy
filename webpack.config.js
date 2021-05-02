@@ -4,12 +4,22 @@ const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.tsx",
-  output: { path: path.join(__dirname, "build"), filename: "index.bundle.js" },
-  mode: process.env.NODE_ENV || "development",
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+  output: {
+    path: path.join(__dirname, "dist/"),
+    publicPath: "/dist/",
+    filename: "bundle.js",
   },
-  devServer: { contentBase: path.join(__dirname, "src"), port: 3000 },
+
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    port: 3000,
+    publicPath: "http://localhost:3000/dist",
+    hotOnly: true,
+    compress: true,
+  },
+
+  mode: process.env.NODE_ENV || "development",
+
   module: {
     rules: [
       {
@@ -32,11 +42,15 @@ module.exports = {
       },
     ],
   },
+
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "src", "index.html"),
+      template: path.join(__dirname, "public/", "index.html"),
     }),
     new Dotenv(),
   ],
 };
-
