@@ -1,15 +1,13 @@
 import React from "react";
-import ReactRouter from "./pages";
-import Posts from "./pages/posts";
+import Pages from "./pages";
+import { hot } from "react-hot-loader";
 
 const App = () => {
-  return (
-    <div className="App">
-      <ReactRouter />
-
-      <Posts />
-    </div>
-  );
+	return (
+		<div className="App">
+			<Pages />
+		</div>
+	);
 };
 
-export default App;
+export default hot(module)(App);

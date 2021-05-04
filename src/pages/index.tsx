@@ -1,17 +1,15 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import routes from "./routes";
 
-function ReactRouter() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        {routes.map((route, key) => (
-          <Route key={key} exact path={route.path} />
-        ))}
-      </Switch>
-    </BrowserRouter>
-  );
-}
+const Pages = () => (
+	<React.Fragment>
+		<BrowserRouter>
+			{routes.map((route, key) => (
+				<Route key={key} exact path={route.path} component={route.component} />
+			))}
+		</BrowserRouter>
+	</React.Fragment>
+);
 
-export default ReactRouter;
+export default Pages;
